@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const emailData = "neslihan@gmail.com"
+const emailData = "agc@gmail.com"
 const passwordData = "12345678"
 
 function jwtSignUser(user) {
@@ -50,6 +50,17 @@ module.exports = {
           token: jwtSignUser(jwtInfo)
         }
       })
+      // to test
+      // setInterval(function() {
+      //   res.send({
+      //     success: true,
+      //     message: "Logged in",
+      //     data: {
+      //       user: jwtInfo,
+      //       token: jwtSignUser(jwtInfo)
+      //     }
+      //   })
+      // },2000)
   },
   register(req, res) {
 
