@@ -7,6 +7,6 @@ router.get('/', (req, res) => {
 })
 
 router.post('/login', AuthController.login)
-// router.post('/checkToken', AuthController.login)
+router.post('/checkToken', AuthController.checkToken)
 
 module.exports = router

@@ -62,8 +62,18 @@ module.exports = {
       //   })
       // },2000)
   },
-  register(req, res) {
 
+  // Checks if the token is valid
+  checkToken(req, res) {
+    const token = req.headers['x-access-token']
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err)  {
+        res.status(401).send({ auth: false, message: 'Failed to authenticate token' })
+      } else {
+        res.status(200).send(decoded)
+      }
+    })
   },
 }
 

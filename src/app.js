@@ -24,7 +24,9 @@ const corsOptions = function (req, callback) {
 }
 
 app.use(bodyParser.json())
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions))
+app.use(cors())
+app.options('*', cors())
 app.use(routes)
 
 app.listen(process.env.PORT, () => {
