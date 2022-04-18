@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 
+// Login Form Inputs
 const emailData = "agc@gmail.com"
 const passwordData = "12345678"
 
@@ -61,6 +62,43 @@ module.exports = {
       //     }
       //   })
       // },2000)
+  },
+
+  // Add partner
+  async addPartner(req, res) {
+    // console.log(req.body)
+    const {
+      legalName, VATNo, chamberOfCommerceNo, legalAddress, partnerType,
+      name, surname, tckn, email, password
+    } = req.body
+
+    if (legalName === undefined || VATNo === undefined || chamberOfCommerceNo === undefined || legalAddress === undefined || partnerType === undefined || 
+      name === undefined || surname === undefined || tckn === undefined || email === undefined || password === undefined) {
+      // console.log('400', legalName,VATNo, chamberOfCommerceNo, legalAddress, partnerType, name, surname, tckn, email, password)
+      return res.status(400).send({
+        success: false,
+        message: "Please check values"
+      })
+    }
+
+    if (VATNo !== 'vatno') {
+      return res.status(400).send({
+        success: false,
+        message: "Check VATNo"
+      })
+    }
+  
+    res.send({
+      success: true,
+      message: "Saved",
+    })
+    // to test
+    // setInterval(function() {
+    //   res.send({
+    //     success: true,
+    //     message: "Saved",
+    //   })
+    // },2000)
   },
 
   // Checks if the token is valid
